@@ -36,20 +36,6 @@ class _RewardsPageState extends State<RewardsPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Center(child: Text('Prêmios')),
-        actions: <Widget> [
-          IconButton(
-            icon: const Icon(Icons.account_circle),
-            tooltip: 'Mostrar Perfil',
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ConfigurationsPage(),
-                ),
-              );
-            },
-          ),
-        ],
       ),
       body: Container(),
       floatingActionButton: _userData['userPermission'] == 2

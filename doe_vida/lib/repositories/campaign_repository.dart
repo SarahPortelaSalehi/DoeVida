@@ -2,14 +2,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:doe_vida/models/campaign.dart';
 
 class CampanhaRepository {
-  static List<Campanha> campanhas = [];
+  static List<Campaign> campanhas = [];
 
   static Future<void> fetchCampanhasFromFirestore() async {
     try {
       final snapshot = await FirebaseFirestore.instance.collection('campaigns').get();
 
       campanhas = snapshot.docs.map((doc) {
-        return Campanha(
+        return Campaign(
           icone: doc.get('icone'),
           codigo: doc.get('codigo'),
           titulo: doc.get('titulo'),
@@ -28,7 +28,7 @@ class CampanhaRepository {
     }
   }
 
-  static Future<void> createCampaignInFirestore(Campanha campanha) async {
+  static Future<void> createCampaignInFirestore(Campaign campanha) async {
     try {
       await FirebaseFirestore.instance.collection('campaigns').add({
         'icone': campanha.icone,

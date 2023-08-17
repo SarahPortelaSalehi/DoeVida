@@ -7,7 +7,7 @@ import '../databases/db_firestore.dart';
 import '../models/campaign.dart';
 
 class ActivesCampaignsRepository extends ChangeNotifier {
-  List<Campanha> _lista = [];
+  List<Campaign> _lista = [];
   late FirebaseFirestore db;
   late AuthService auth;
 
@@ -30,7 +30,7 @@ class ActivesCampaignsRepository extends ChangeNotifier {
         final snapshot = await db.collection('active_campaigns').get();
 
         for (var doc in snapshot.docs) {
-          Campanha campanha = CampanhaRepository.campanhas.firstWhere((campanha) => campanha.codigo == doc.get('codigo'));
+          Campaign campanha = CampanhaRepository.campanhas.firstWhere((campanha) => campanha.codigo == doc.get('codigo'));
           _lista.add(campanha);
           notifyListeners();
         }
@@ -40,9 +40,9 @@ class ActivesCampaignsRepository extends ChangeNotifier {
     }
   }
 
-  UnmodifiableListView<Campanha> get lista => UnmodifiableListView(_lista);
+  UnmodifiableListView<Campaign> get lista => UnmodifiableListView(_lista);
 
-  saveAll(List<Campanha> campanhas) async {
+  saveAll(List<Campaign> campanhas) async {
     for (var campanha in campanhas) {
       if (!_lista.any((atual) => atual.codigo == campanha.codigo)) {
         _lista.add(campanha);
@@ -67,7 +67,7 @@ class ActivesCampaignsRepository extends ChangeNotifier {
     notifyListeners();
   }
   
-  remove(Campanha campanha) async {
+  remove(Campaign campanha) async {
     await db.collection('active_campaigns').doc(campanha.codigo.toString()).delete();
     _lista.remove(campanha);
     notifyListeners();

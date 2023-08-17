@@ -1,4 +1,4 @@
-class Campanha {
+class Campaign {
   String icone;
   int codigo;
   String titulo;
@@ -10,7 +10,7 @@ class Campanha {
   int progressoEsperado;
   String userId;
 
-  Campanha({
+  Campaign({
     required this.icone,
     required this.codigo,
     required this.titulo,
@@ -22,4 +22,5 @@ class Campanha {
     required this.progressoEsperado,
     required this.userId,
   });
+
 }

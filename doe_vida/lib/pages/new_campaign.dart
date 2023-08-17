@@ -47,7 +47,7 @@ class _NewCampaignPageState extends State<NewCampaignPage> {
   createCampaign() async {
     if (_form.currentState!.validate()) {
       final int codigo = int.parse(_codigo.text);
-      final Campanha newCampanha = Campanha(
+      final Campaign newCampanha = Campaign(
         icone: 'images/gota.png',
         codigo: codigo,
         titulo: titulo.text,

@@ -6,7 +6,7 @@ import '../repositories/campaign_repository.dart';
 import '../models/campaign.dart';
 
 class CampaignCard extends StatefulWidget {
-  Campanha campanha;
+  Campaign campanha;
 
   CampaignCard({Key? key, required this.campanha}) : super(key: key);
 
@@ -25,7 +25,7 @@ class _CampaignCardState extends State<CampaignCard> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (_) => CampaignDetailsPage(campanha: widget.campanha),
+        builder: (_) => CampaignDetailsPage(campaign: widget.campanha),
       ),
     );
   }

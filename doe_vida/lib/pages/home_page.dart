@@ -3,7 +3,7 @@ import 'package:doe_vida/pages/rewards_page.dart';
 import 'package:flutter/material.dart';
 
 import 'active_campaigns_page.dart';
-import 'campaigns_home_page.dart';
+import 'inactive_campaigns_page.dart';
 import 'config_page.dart';
 
 class HomePage extends StatefulWidget {

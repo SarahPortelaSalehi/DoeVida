@@ -1,4 +1,4 @@
-import 'package:doe_vida/pages/campaigns_home_page.dart';
+import 'package:doe_vida/pages/inactive_campaigns_page.dart';
 import 'package:doe_vida/pages/new_campaign.dart';
 
 import '../delegates/fab_vertical_delegate.dart';

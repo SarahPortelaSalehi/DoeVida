@@ -1,4 +1,4 @@
-import 'package:doe_vida/pages/campaigns_home_page.dart';
+import 'package:doe_vida/pages/inactive_campaigns_page.dart';
 import 'package:doe_vida/pages/new_campaign.dart';
 
 import '../delegates/fab_vertical_delegate.dart';
@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 import '../pages/new_news_page.dart';
 import '../services/auth_service.dart';
+import '../services/user_service.dart';
 
 class FabMenuButton extends StatefulWidget {
   final AuthService auth;
@@ -20,14 +21,23 @@ class _FabMenuButtonState extends State<FabMenuButton>
   final actionButtonColor = Colors.redAccent.shade100;
   late AnimationController animation;
   final menuIsOpen = ValueNotifier(false);
+  Map<String, dynamic> _userData = {};
 
   @override
   void initState() {
     super.initState();
+    _fetchUserDetails();
     animation = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 250),
     );
+  }
+
+  Future<void> _fetchUserDetails() async {
+    Map<String, dynamic> userData = await UserService.getUserDetails();
+    setState(() {
+      _userData = userData;
+    });
   }
 
   @override
@@ -54,7 +64,7 @@ class _FabMenuButtonState extends State<FabMenuButton>
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (_) => CampaignsHomePage(),
+        builder: (_) => InactiveCampaignsPage(),
       ),
     );
   }
@@ -77,7 +87,7 @@ class _FabMenuButtonState extends State<FabMenuButton>
           backgroundColor: actionButtonColor,
           child: const Icon(Icons.add),
         ),
-        FloatingActionButton(
+        if (_userData['userPermission'] == 2) FloatingActionButton(
           onPressed: () => irparaCampanhas(),
           backgroundColor: actionButtonColor,
           child: const Icon(Icons.check),
