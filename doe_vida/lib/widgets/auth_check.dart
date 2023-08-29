@@ -1,8 +1,8 @@
-import 'package:doe_vida/pages/home_page.dart';
+import 'package:doe_vida/pages/home.dart';
 import 'package:doe_vida/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../pages/login_page.dart';
+import '../pages/login.dart';
 
 class AuthCheck extends StatefulWidget {
   const AuthCheck({super.key});

@@ -18,4 +18,14 @@ class UserService {
       return {}; // Retorna um mapa vazio em caso de erro
     }
   }
+  static Future<void> updateUserDetails(Map<String, dynamic> updatedData) async {
+    String userId = FirebaseAuth.instance.currentUser!.uid;
+
+    try {
+      await FirebaseFirestore.instance.collection('users').doc(userId).update(updatedData);
+    } catch (e) {
+      print('Erro ao atualizar detalhes do usuário: $e');
+      // Você pode tratar o erro de acordo com suas necessidades
+    }
+  }
 }

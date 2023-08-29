@@ -13,7 +13,7 @@ class NewNewsPage extends StatefulWidget {
 
 class _NewNewsPageState extends State<NewNewsPage> {
   //final _form = GlobalKey<FormState>();
-  final icone = 'images/gota.png';
+  final icone = 'images/doacao-sangue.png';
   final _tituloNoticia = TextEditingController();
   final _descricaoNoticia = TextEditingController();
 

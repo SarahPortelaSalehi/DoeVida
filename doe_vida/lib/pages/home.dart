@@ -1,10 +1,10 @@
-import 'package:doe_vida/pages/news_home_page.dart';
-import 'package:doe_vida/pages/rewards_page.dart';
+import 'package:doe_vida/pages/noticias.dart';
+import 'package:doe_vida/pages/premios.dart';
 import 'package:flutter/material.dart';
 
-import 'active_campaigns_page.dart';
-import 'inactive_campaigns_page.dart';
-import 'config_page.dart';
+import 'campanhas_ativas.dart';
+import 'campanhas_inativas.dart';
+import 'perfil.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

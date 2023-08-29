@@ -24,6 +24,7 @@ class _NewsEditPageState extends State<NewsEditPage> {
 
       // Volta para a página de detalhes após a edição
       Navigator.pop(context);
+      Navigator.pop(context);
     } catch (e) {
       print('Erro ao atualizar notícia: $e');
     }

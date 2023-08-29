@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../pages/campaign_page.dart';
+import '../pages/campanha_detalhes.dart';
 import '../repositories/actives_campaigns_repository.dart';
 import '../repositories/campaign_repository.dart';
 import '../models/campaign.dart';
+import '../services/user_service.dart';
 
 class CampaignCard extends StatefulWidget {
   Campaign campanha;
@@ -15,11 +16,19 @@ class CampaignCard extends StatefulWidget {
 }
 
 class _CampaignCardState extends State<CampaignCard> {
+  Map<String, dynamic> _userData = {};
 
   static Map<String, Color> precoColor = <String, Color>{
     'up': Colors.teal,
     'down': Colors.grey,
   };
+
+  Future<void> _fetchUserDetails() async {
+    Map<String, dynamic> userData = await UserService.getUserDetails();
+    setState(() {
+      _userData = userData;
+    });
+  }
 
   abrirDetalhes() {
     Navigator.push(
@@ -28,6 +37,12 @@ class _CampaignCardState extends State<CampaignCard> {
         builder: (_) => CampaignDetailsPage(campaign: widget.campanha),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchUserDetails();
   }
 
   @override
@@ -87,7 +102,7 @@ class _CampaignCardState extends State<CampaignCard> {
                   ),
                 ),
               ),
-              PopupMenuButton(
+              if(_userData['userPermission'] == 2) PopupMenuButton(
                 icon: Icon(Icons.more_vert),
                 itemBuilder: (context) => [
                   PopupMenuItem(

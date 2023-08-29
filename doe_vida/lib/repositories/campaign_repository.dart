@@ -30,7 +30,9 @@ class CampanhaRepository {
 
   static Future<void> createCampaignInFirestore(Campaign campanha) async {
     try {
-      await FirebaseFirestore.instance.collection('campaigns').add({
+      await FirebaseFirestore.instance
+          .collection('campaigns').doc(campanha.codigo.toString())
+          .set({
         'icone': campanha.icone,
         'codigo': campanha.codigo,
         'titulo': campanha.titulo,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import '../services/auth_service.dart';
 
@@ -34,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
     setState(() {
       isLogin = acao;
       if (isLogin) {
-        titulo = 'Bem-vindo ao Doe Vida';
+        titulo = 'Bem-vindo';
         actionButton = 'Login';
         toggleButton = 'Ainda não tem conta? Cadastre-se agora';
       } else {
@@ -59,7 +60,8 @@ class _LoginPageState extends State<LoginPage> {
   registrar() async {
     setState(() => loading = true);
     try {
-      await context.read<AuthService>().registrar(email.text, senha.text, nome.text, dropValue.value, userPermission);
+      await context.read<AuthService>().registrar(
+          email.text, senha.text, nome.text, dropValue.value, userPermission);
     } on AuthException catch (e) {
       setState(() => loading = false);
       ScaffoldMessenger.of(context)
@@ -218,6 +220,7 @@ class _LoginPageState extends State<LoginPage> {
                   onPressed: () => setFormAction(!isLogin),
                   child: Text(toggleButton),
                 ),
+                Lottie.network("https://lottie.host/76cbdd76-6664-4ef4-bab2-3d3bbd44fcb0/KN9LGfPpVB.json")
               ],
             ),
           ),

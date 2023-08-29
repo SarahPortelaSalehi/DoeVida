@@ -8,8 +8,6 @@ import '../services/auth_service.dart';
 import '../widgets/campaign_card.dart';
 import '../widgets/fabmenu_button.dart';
 
-import 'config_page.dart';
-
 class ActiveCampaignsPage extends StatefulWidget {
   const ActiveCampaignsPage({Key? key}) : super(key: key);
 
@@ -21,7 +19,7 @@ class _ActiveCampaignsPageState extends State<ActiveCampaignsPage> {
   @override
   Widget build(BuildContext context) {
     final auth = Provider.of<AuthService>(context);
-    final firestore = FirebaseFirestore.instance; // Create a Firestore instance
+    final firestore = FirebaseFirestore.instance;
 
     return Scaffold(
       appBar: AppBar(

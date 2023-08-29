@@ -1,10 +1,10 @@
-import 'package:doe_vida/pages/inactive_campaigns_page.dart';
-import 'package:doe_vida/pages/new_campaign.dart';
+import 'package:doe_vida/pages/campanhas_inativas.dart';
+import 'package:doe_vida/pages/criar_campanha.dart';
 
 import '../delegates/fab_vertical_delegate.dart';
 import 'package:flutter/material.dart';
 
-import '../pages/new_news_page.dart';
+import '../pages/criar_noticia.dart';
 import '../services/auth_service.dart';
 import '../services/user_service.dart';
 

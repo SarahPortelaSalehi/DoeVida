@@ -1,10 +1,9 @@
-import 'package:doe_vida/pages/inactive_campaigns_page.dart';
-import 'package:doe_vida/pages/new_campaign.dart';
+import 'package:doe_vida/pages/criar_cupom.dart';
 
 import '../delegates/fab_vertical_delegate.dart';
 import 'package:flutter/material.dart';
 
-import '../pages/new_news_page.dart';
+import '../pages/criar_noticia.dart';
 import '../services/auth_service.dart';
 
 class FabMenuRewardsButton extends StatefulWidget {
@@ -12,10 +11,10 @@ class FabMenuRewardsButton extends StatefulWidget {
   const FabMenuRewardsButton({Key? key, required this.auth}) : super(key: key);
 
   @override
-  State<FabMenuRewardsButton> createState() => _FabMenuRewardsButtonState();
+  State<FabMenuRewardsButton> createState() => _FabMenuRewardsState();
 }
 
-class _FabMenuRewardsButtonState extends State<FabMenuRewardsButton>
+class _FabMenuRewardsState extends State<FabMenuRewardsButton>
     with SingleTickerProviderStateMixin {
   final actionButtonColor = Colors.redAccent.shade100;
   late AnimationController animation;
@@ -45,7 +44,7 @@ class _FabMenuRewardsButtonState extends State<FabMenuRewardsButton>
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (_) => const NewNewsPage(),
+        builder: (_) => const NewCupomPage(),
       ),
     );
   }
@@ -64,8 +63,7 @@ class _FabMenuRewardsButtonState extends State<FabMenuRewardsButton>
           onPressed: () => toggleMenu(),
         ),
         FloatingActionButton(
-          onPressed: () {
-          },
+          onPressed: () => criarNoticia(),
           backgroundColor: actionButtonColor,
           child: const Icon(Icons.emoji_events_outlined),
         ),

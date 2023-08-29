@@ -37,6 +37,10 @@ class AuthService extends ChangeNotifier {
         'nome': nome,
         'tipoSanguineo': tipoSanguineo,
         'userPermission': userPermission,
+        'pontos': 0,
+        'pontosTotais': 0,
+        'cuponsResgatados': [],
+        'campanhasParticipadas': [],
       });
 
       _getUser();

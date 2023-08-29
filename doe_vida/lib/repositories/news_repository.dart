@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
 
 class NewsListState extends ChangeNotifier {
   List<String> _news = []; // Armazena os títulos das notícias
@@ -33,7 +32,8 @@ class GetIconNews extends StatelessWidget {
             return Text('No data available');
           }
 
-          Map<String, dynamic>? data = snapshot.data!.data() as Map<String, dynamic>?;
+          Map<String, dynamic>? data =
+              snapshot.data!.data() as Map<String, dynamic>?;
           if (data == null) {
             return Text('Data is null');
           }
@@ -52,7 +52,6 @@ class GetIconNews extends StatelessWidget {
   }
 }
 
-
 class GetTituloNews extends StatelessWidget {
   final String documentId;
 
@@ -66,14 +65,22 @@ class GetTituloNews extends StatelessWidget {
       builder: ((context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           if (snapshot.data != null) {
-            Map<String, dynamic>? data = snapshot.data!.data() as Map<String, dynamic>?;
+            Map<String, dynamic>? data =
+                snapshot.data!.data() as Map<String, dynamic>?;
             if (data != null) {
-              return Text('${data['titulo']}');
+              return Text(
+                '${data['titulo']}',
+                style: const TextStyle(
+                  fontSize: 11,
+                ),
+              );
             } else {
-              return const Text('Data is null'); // Handle the case when data is null
+              return const Text(
+                  'Data is null'); // Handle the case when data is null
             }
           } else {
-            return const Text('Snapshot data is null'); // Handle the case when snapshot data is null
+            return const Text(
+                'Snapshot data is null'); // Handle the case when snapshot data is null
           }
         }
         return const Text('loading..');
@@ -95,7 +102,7 @@ class GetDescricaoNews extends StatelessWidget {
       builder: ((context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           Map<String, dynamic> data =
-          snapshot.data!.data() as Map<String, dynamic>;
+              snapshot.data!.data() as Map<String, dynamic>;
           return Text('${data['descricao']}');
         }
         return const Text('loading..');
@@ -103,4 +110,3 @@ class GetDescricaoNews extends StatelessWidget {
     );
   }
 }
-
